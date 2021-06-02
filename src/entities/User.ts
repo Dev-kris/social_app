@@ -1,18 +1,42 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { IsEmail, MinLength } from 'class-validator';
 
-@Entity()
-export class User {
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  Index,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity('users')
+export class User extends BaseEntity {
+  constructor(user: Partial<User>) {
+    super();
+    Object.assign(this, user);
+  }
 
-    @Column()
-    firstName: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    lastName: string;
+  @Index()
+  @IsEmail()
+  @Column({ unique: true })
+  email: string;
 
-    @Column()
-    age: number;
+  @Index()
+  @MinLength(3, { message: 'Username must be more than 3 characters.' })
+  @Column({ unique: true })
+  username: string;
 
+  @Column()
+  @MinLength(6, { message: 'Password must be more 6 characters' })
+  password: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
