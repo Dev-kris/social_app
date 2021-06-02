@@ -1,4 +1,3 @@
-import { S_IFMT } from 'constants';
 import { Request, Response, Router } from 'express';
 import { validate } from 'class-validator';
 
@@ -14,7 +13,7 @@ const register = async (req: Request, res: Response) => {
     const errors = await validate(user);
     if (errors.length > 0) return res.status(400).json({ errors });
 
-    await user.save;
+    await user.save();
 
     //TODO Return User
     return res.json(user);
