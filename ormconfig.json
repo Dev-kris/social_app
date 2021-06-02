@@ -6,7 +6,7 @@
   "password": "openclassrooms",
   "database": "social_app",
   "synchronize": true,
-  "logging": false,
+  "logging": true,
   "entities": ["src/entities/**/*.ts"],
   "migrations": ["src/migrations/**/*.ts"],
   "subscribers": ["src/subscribers/**/*.ts"],
