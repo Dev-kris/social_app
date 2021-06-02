@@ -1,21 +1,24 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm'; //creates connection to db
-import { User } from './entities/User';
+import express from 'express';
+import morgan from 'morgan'; //http request logger for node
 
-createConnection()
-  .then(async (connection) => {
-    console.log('Inserting a new user into the database...');
-    const user = new User();
-    user.firstName = 'Timber';
-    user.lastName = 'Saw';
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log('Saved a new user with id: ' + user.id);
+import authRoutes from './routes/auth';
 
-    console.log('Loading users from the database...');
-    const users = await connection.manager.find(User);
-    console.log('Loaded users: ', users);
+const app = express();
 
-    console.log('Here you can setup and run express/koa/any other framework.');
-  })
-  .catch((error) => console.log(error));
+app.use(express.json());
+app.use(morgan('dev'));
+
+app.get('/', (_, res) => res.send('Hello World'));
+app.use('/api/auth', authRoutes);
+app.listen(5000, async () => {
+  console.log('server running at localhost:5000');
+
+  try {
+    await createConnection();
+    console.log('mySQL db Connected');
+  } catch (err) {
+    console.log(err);
+  }
+});
