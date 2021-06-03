@@ -3,6 +3,7 @@ import { createConnection } from 'typeorm'; //creates connection to db
 import express from 'express';
 import morgan from 'morgan'; //http request logger for node
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(trim);
+app.use(cookieParser());
 
 app.get('/', (_, res) => res.send('Hello World'));
 app.use('/api/auth', authRoutes);
