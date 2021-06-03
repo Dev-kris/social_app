@@ -2,6 +2,9 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm'; //creates connection to db
 import express from 'express';
 import morgan from 'morgan'; //http request logger for node
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import authRoutes from './routes/auth';
 import trim from './middleware/trim';
