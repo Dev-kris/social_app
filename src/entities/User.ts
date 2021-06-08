@@ -16,7 +16,7 @@ export default class User extends Entity {
   }
 
   //@Index()
-  @IsEmail()
+  @IsEmail(undefined, { message: 'Must be a valid Email address.' })
   @Length(3, 254, { message: 'Please provide a valid email address.' })
   @Column({ unique: true })
   email: string;
