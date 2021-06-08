@@ -1,18 +1,11 @@
 import { IsEmail, Length, MinLength } from 'class-validator';
 
-import {
-  Entity as TOEntity,
-  Column,
-  Index,
-  BeforeInsert,
-  OneToMany,
-} from 'typeorm';
+import { Entity as TOEntity, Column, BeforeInsert, OneToMany } from 'typeorm';
 
 import bcrypt from 'bcrypt';
 import { Exclude } from 'class-transformer';
 
 import Entity from './Entity';
-import { define } from 'mime';
 import Post from './Posts';
 
 @TOEntity('users')
