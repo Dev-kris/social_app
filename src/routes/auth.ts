@@ -58,7 +58,7 @@ const login = async (req: Request, res: Response) => {
       return res.status(401).json({ password: 'Password is incorrect' });
     }
 
-    const token = jwt.sign({ username }, process.env.JWT_SECRET); //key is in src/.env
+    const token = jwt.sign({ username }, process.env.JWT_SECRET!); //key is in src/.env
     res.set(
       'set-cookie',
       cookie.serialize('token', token, {
@@ -70,7 +70,10 @@ const login = async (req: Request, res: Response) => {
       })
     );
     return res.json({ user });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+    return res.json({ error: 'Something went wrong.' });
+  }
 };
 
 const me = (_: Request, res: Response) => {
