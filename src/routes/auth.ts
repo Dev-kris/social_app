@@ -23,8 +23,8 @@ const register = async (req: Request, res: Response) => {
     const emailUser = await User.findOne({ email });
     const usernameUser = await User.findOne({ username });
 
-    if (emailUser) errors.Username = 'Email is already taken ';
-    if (usernameUser) errors.Username = 'Username is already taken ';
+    if (emailUser) errors.email = 'Email address is already taken ';
+    if (usernameUser) errors.username = 'Username is already taken ';
 
     if (Object.keys(errors).length > 0) {
       return res.status(400).json(errors);
@@ -61,7 +61,7 @@ const login = async (req: Request, res: Response) => {
     }
 
     const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    if (!user) return res.status(404).json({ username: 'User not found' });
 
     const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) {
