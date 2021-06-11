@@ -8,13 +8,14 @@ import {
   OneToMany,
   AfterLoad,
 } from 'typeorm';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 
 import Entity from './Entity';
 import User from './User';
 import { makeId, slugify } from '../util/helpers';
 import Sub from './Sub';
 import Comment from './Comment';
+import Vote from './vote';
 
 @TOEntity('posts')
 export default class Post extends Entity {
@@ -50,18 +51,33 @@ export default class Post extends Entity {
   @JoinColumn({ name: 'subName', referencedColumnName: 'name' })
   sub: Sub;
 
+  @Exclude()
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[];
+
+  //if you want to make voting anonymous
+  @Exclude()
+  @OneToMany(() => Vote, (vote) => vote.post)
+  votes: Vote[];
 
   @Expose() get url(): string {
     return `/r/${this.subName}/${this.identifier}/${this.slug}`;
   }
 
-  // protected url: string;
-  // @AfterLoad()
-  // createFields() {
-  //   this.url = `/r/${this.subName}/${this.identifier}/${this.slug}`;
-  // }
+  @Expose() get commentCount(): number {
+    return this.comments?.length;
+  }
+
+  // gives us total number of votes
+  @Expose() get voteScore(): number {
+    return this.votes?.reduce((prev, curr) => prev + (curr.value || 0), 0);
+  }
+  //identifies if user has already voted on this post/comment
+  protected userVote: number;
+  setUserVote(user: User) {
+    const index = this.votes?.findIndex((v) => v.username === user.username);
+    this.userVote = index > -1 ? this.votes[index].value : 0;
+  }
 
   @BeforeInsert()
   makeIdAndSlug() {
