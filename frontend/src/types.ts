@@ -1,7 +1,7 @@
 export interface Post {
   identifier: string;
   title: string;
-  body: string;
+  body?: string; //body is optional
   slug: string;
   subName: string;
   createdAt: string;
@@ -9,4 +9,7 @@ export interface Post {
   username: string;
   // Virtual Fields
   url: string;
+  voteScore?: number;
+  commentCount?: number;
+  userVote?: number;
 }
