@@ -7,6 +7,7 @@ import { Exclude } from 'class-transformer';
 
 import Entity from './Entity';
 import Post from './Posts';
+import Vote from './vote';
 
 @TOEntity('users')
 export default class User extends Entity {
@@ -35,6 +36,9 @@ export default class User extends Entity {
 
   @OneToMany(() => Post, (post) => post.user) //inverse relation
   posts: Post[];
+
+  @OneToMany(() => Vote, (vote) => vote.user)
+  votes: Vote[];
 
   @BeforeInsert()
   async hashPassword() {
