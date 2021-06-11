@@ -1,7 +1,8 @@
 import { AppProps } from 'next/app';
 import Axios from 'axios';
-import React, { Fragment } from 'react';
 import { useRouter } from 'next/router';
+
+import { AuthProvider } from '../context/auth';
 
 import '../styles/tailwind.css';
 
@@ -15,10 +16,10 @@ function App({ Component, pageProps }: AppProps) {
   const authRoutes = ['/register', '/login'];
   const authRoute = authRoutes.includes(pathname); //returns true for login/signup page
   return (
-    <Fragment>
+    <AuthProvider>
       {!authRoute && <Navbar />}
       <Component {...pageProps} />
-    </Fragment>
+    </AuthProvider>
   );
 }
 
