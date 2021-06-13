@@ -18,7 +18,7 @@ export default function Home() {
   const { data: posts } = useSWR('/posts');
 
   return (
-    <div className="pt-12">
+    <Fragment>
       <Head>
         <title>Groupomania</title>
       </Head>
@@ -31,7 +31,7 @@ export default function Home() {
         </div>
         {/* Sidebar */}
       </div>
-    </div>
+    </Fragment>
   );
 }
 //research nprogress for loading animation
