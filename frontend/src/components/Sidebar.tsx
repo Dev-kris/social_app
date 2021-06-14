@@ -16,13 +16,12 @@ export default function Sidebar({ sub }: { sub: Sub }) {
           <p className="mb-3 text-md">{sub.description}</p>
           <div className="flex mb-3 text-sm font-medium">
             <div className="w-1/2">
-              {/* Hardcoded user stats, TODO Populate */}
-              <p>5.2k</p>
-              <p>Members</p>
+              <p>Total Posts</p>
+              <p>{sub.posts.length}</p>
             </div>
             <div className="w-1/2">
-              <p>233</p>
-              <p>Online</p>
+              <p>Created By</p>
+              <p>{sub.username}</p>
             </div>
           </div>
           <p className="my-3">
