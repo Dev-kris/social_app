@@ -67,7 +67,7 @@ const vote = async (req: Request, res: Response) => {
 const topSubs = async (_: Request, res: Response) => {
   try {
     //TO DO: Test further and add ENV
-    const imageUrlExp = `COALESCE( CONCAT('http://localhost:5000/images/',s.imageUrn) , 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y')`;
+    const imageUrlExp = `COALESCE( CONCAT('${process.env.APP_URL}/images/',s.imageUrn) , 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=robohash&f=y')`;
     const subs = await getConnection()
       .createQueryBuilder()
       .select(
