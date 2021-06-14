@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export default function Sidebar({ sub }: { sub: Sub }) {
   const { authenticated } = useAuthState();
+
   return (
     <div className="ml-6 w-80">
       <div className="bg-white rounded">
@@ -16,8 +17,9 @@ export default function Sidebar({ sub }: { sub: Sub }) {
           <p className="mb-3 text-md">{sub.description}</p>
           <div className="flex mb-3 text-sm font-medium">
             <div className="w-1/2">
-              <p>Total Posts</p>
-              <p>{sub.posts.length}</p>
+              {/* TODO Update with Total Post Count */}
+              <p>Last Activity</p>
+              <p>{dayjs(sub.updatedAt).fromNow()}</p>
             </div>
             <div className="w-1/2">
               <p>Created By</p>
