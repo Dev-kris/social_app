@@ -19,7 +19,7 @@ export default function Sidebar({ sub }: { sub: Sub }) {
             <div className="w-1/2">
               {/* TODO Update with Total Post Count */}
               <p>Last Activity</p>
-              <p>{dayjs(sub.updatedAt).fromNow()}</p>
+              {/* <p>{dayjs(sub.updatedAt).fromNow()}</p> */}
             </div>
             <div className="w-1/2">
               <p>Created By</p>
