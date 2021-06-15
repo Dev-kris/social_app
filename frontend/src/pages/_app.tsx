@@ -29,7 +29,7 @@ function App({ Component, pageProps }: AppProps) {
     <SWRConfig
       value={{
         fetcher,
-        dedupingInterval: 5000, //limits fetching data from server to once / 5 seconds.
+        dedupingInterval: 10000, //limits fetching data from server to once / 5 seconds.
       }}
     >
       <AuthProvider>
