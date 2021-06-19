@@ -18,11 +18,14 @@ export default function user() {
   return (
     <>
       <Head>
-        <title>{data?.user.username}</title>
+        <title>{data?.user.username}'s activity</title>
       </Head>
       {data && (
-        <div className="container flex pt-5">
+        <div className="container flex pt-5 pr-2">
           <div className="w-160">
+            <h1 className="justify-center pb-3 pl-20 text-2xl font-semibold">
+              {data?.user.username}'s activity
+            </h1>
             {data.submissions.map((submission: any) => {
               if (submission.type === 'Post') {
                 const post: Post = submission;
@@ -62,7 +65,7 @@ export default function user() {
               }
             })}
           </div>
-          <div className="ml-6 w-80">
+          <div className="hidden ml-6 w-80 md:block">
             <div className="bg-white rounded">
               <div className="p-3 bg-blue-500 rounded-t">
                 <img
