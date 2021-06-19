@@ -1,6 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { ChangeEvent, createRef, Fragment, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  createRef,
+  Fragment,
+  useEffect,
+  useState,
+} from 'react';
 import useSWR from 'swr';
 import PostCard from '../../components/PostCard';
 import Image from 'next/image';
@@ -10,6 +16,7 @@ import Axios from 'axios';
 import { Sub } from '../../types';
 import { useAuthState } from '../../context/auth';
 import Sidebar from '../../components/Sidebar';
+import Link from 'next/link';
 
 export default function SubPage() {
   //Local State
@@ -125,7 +132,9 @@ export default function SubPage() {
                 </div>
                 <div className="pt-1 pl-24">
                   <div className="flex items-center">
-                    <h1 className="mb-1 text-3xl font-bold">{sub.title}</h1>
+                    <h1 className="mb-1 font-bold text-1xl sm:text-3xl">
+                      {sub.title}
+                    </h1>
                   </div>
                   <p className="text-sm font-bold text-gray-500">
                     /r/{sub.name}
@@ -134,10 +143,20 @@ export default function SubPage() {
               </div>
             </div>
           </div>
+          {/* Create a post (Mobile) */}
+          {authenticated && (
+            <Link href={`/r/${sub.name}/submit`}>
+              <a className="block w-full py-1 text-sm md:hidden blue button">
+                Create Post
+              </a>
+            </Link>
+          )}
           {/* Posts section and Sidebar */}
           <div className="container flex pt-5">
-            <div className="w-160">{postsMarkup} </div>
-            <Sidebar sub={sub} />
+            <div className="pr-2 w-160">{postsMarkup} </div>
+            <div className="hidden ml-6 md:block w-80">
+              <Sidebar sub={sub} />
+            </div>
           </div>
         </Fragment>
       )}

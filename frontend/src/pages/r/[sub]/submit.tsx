@@ -78,7 +78,9 @@ export default function submit() {
           </form>
         </div>
       </div>
-      {sub && <Sidebar sub={sub} />}
+      <div className="hidden ml-6 md:block w-80">
+        {sub && <Sidebar sub={sub} />}
+      </div>
     </div>
   );
 }

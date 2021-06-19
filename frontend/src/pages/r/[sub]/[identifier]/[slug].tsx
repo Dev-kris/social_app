@@ -1,3 +1,5 @@
+//dynamic single post display page
+
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -99,7 +101,7 @@ export default function PostPage() {
       </Link>
       <div className="container flex pt-5">
         {/* Post */}
-        <div className="w-160">
+        <div className="pr-2 w-160">
           <div className="bg-white rounded">
             {post && (
               <>
@@ -275,7 +277,9 @@ export default function PostPage() {
           </div>
         </div>
         {/* Sidebar */}
-        {post && <Sidebar sub={post.sub} />}
+        <div className="hidden ml-6 md:block w-80">
+          {post && <Sidebar sub={post.sub} />}
+        </div>
       </div>
     </>
   );

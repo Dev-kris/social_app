@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Axios from 'axios';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { useAuthDispatch, useAuthState } from '../context/auth';
 
@@ -43,12 +44,20 @@ export default function Register() {
       </Head>
 
       <div
-        className="h-screen bg-center bg-cover w-36"
+        className="w-0 h-screen bg-center bg-cover sm:w-36"
         style={{ backgroundImage: "url('/images/texture-brick.jpeg' )" }}
       ></div>
 
       <div className="flex flex-col justify-center pl-6">
         <div className="w-70">
+          <Image
+            src="/images/icon.png"
+            alt="Sub"
+            layout="responsive"
+            objectFit="cover"
+            height="100px"
+            width="200px"
+          />
           <h1 className="mb-2 text-lg">Login</h1>
           <p className="mb-10 text-xs">
             By continuing, you agree to our User Aggrement and Privacy Policy.
