@@ -17,9 +17,8 @@ export default function Sidebar({ sub }: { sub: Sub }) {
           <p className="mb-3 text-md">{sub.description}</p>
           <div className="flex mb-3 text-sm font-medium">
             <div className="w-1/2">
-              {/* TODO Update with Total Post Count */}
-              <p>Last Activity</p>
-              {/* <p>{dayjs(sub.updatedAt).fromNow()}</p> */}
+              <p>Total Posts</p>
+              <p>{sub.posts.length}</p>
             </div>
             <div className="w-1/2">
               <p>Created By</p>
