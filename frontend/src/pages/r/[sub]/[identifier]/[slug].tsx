@@ -8,6 +8,7 @@ import useSWR from 'swr';
 import Image from 'next/image';
 import Axios from 'axios';
 import dayjs from 'dayjs';
+import Linkify from 'react-linkify';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import classNames from 'classnames';
 import { useAuthState } from '../../../../context/auth';
@@ -26,6 +27,8 @@ export default function PostPage() {
   //Utils
   const router = useRouter();
   const { identifier, sub, slug } = router.query;
+
+  const isOnSubPage = router.pathname === `/r/[slug]`;
 
   const { data: post, error } = useSWR<Post>(
     identifier && slug ? `/posts/${identifier}/${slug}` : null
@@ -152,7 +155,14 @@ export default function PostPage() {
                     {/* Post Title */}
                     <h1 className="my-1 text-xl font-medium">{post.title}</h1>
                     {/* Post Body */}
-                    <p className="my-3 text-sm">{post.body}</p>
+                    <Linkify
+                      className="my-3 text-sm text-blue-500"
+                      properties={{
+                        style: { color: 'blue' },
+                      }}
+                    >
+                      {post.body}
+                    </Linkify>
                     {/* Action Buttons */}
                     <div className="flex">
                       <Link href={post.url}>
@@ -277,9 +287,6 @@ export default function PostPage() {
           </div>
         </div>
         {/* Sidebar */}
-        <div className="hidden ml-6 md:block w-80">
-          {post && <Sidebar sub={post.sub} />}
-        </div>
       </div>
     </>
   );
