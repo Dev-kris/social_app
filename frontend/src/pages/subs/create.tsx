@@ -33,7 +33,7 @@ export default function create() {
         <title>Create a Community</title>
       </Head>
       <div
-        className="h-screen bg-center bg-cover w-36"
+        className="w-0 h-screen bg-center bg-cover sm:w-36"
         style={{ backgroundImage: "url('/images/texture-brick.jpeg')" }}
       ></div>
       <div className="flex flex-col justify-center pl-6">
