@@ -14,6 +14,8 @@ export default function submit() {
   const router = useRouter();
   const { sub: subName } = router.query;
 
+  const isOnSubmitPage = router.pathname === `/r/[sub]/submit`;
+
   const { data: sub, error } = useSWR<Sub>(subName ? `/subs/${subName}` : null);
   if (error) router.push('/');
 
@@ -78,9 +80,13 @@ export default function submit() {
           </form>
         </div>
       </div>
-      <div className="hidden ml-6 md:block w-80">
-        {sub && <Sidebar sub={sub} />}
-      </div>
+      {!isOnSubmitPage && (
+        <>
+          <div className="hidden ml-6 md:block w-80">
+            {sub && <Sidebar sub={sub} />}
+          </div>
+        </>
+      )}
     </div>
   );
 }
