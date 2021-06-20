@@ -1,7 +1,23 @@
-# Awesome Project Build with TypeORM
+# Recreate Reddit
 
-Steps to run this project:
+This app is a recreation of Reddit for use by a company, internally, to promote stronger intradepartmental social connections
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+Users are able to create their own communities where they can discuss their interests, hobbies, or share interesting information.
+
+# DEMO
+
+[![Video Of Reddit Copy](https://youtu.be/dDX7NLgd1-c)](https://youtu.be/dDX7NLgd1-c)
+
+## This app uses:
+
+### Frontend:
+
+Next JS
+Typescript
+Tailwind CSS
+
+### Backend:
+
+MySql
+TypeORM
+Express
