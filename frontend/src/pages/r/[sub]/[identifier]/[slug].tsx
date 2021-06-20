@@ -287,6 +287,13 @@ export default function PostPage() {
           </div>
         </div>
         {/* Sidebar */}
+        {isOnSubPage && (
+          <>
+            <div className="hidden ml-6 md:block w-80">
+              {post && <Sidebar sub={post.sub} />}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
