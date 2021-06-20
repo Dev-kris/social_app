@@ -6,7 +6,7 @@ Users are able to create their own communities where they can discuss their inte
 
 # DEMO
 
-[![Video Of Reddit Copy](https://youtu.be/dDX7NLgd1-c)](https://youtu.be/dDX7NLgd1-c)
+[![Video Of Reddit Copy](https://github.com/Dev-kris/social_app/blob/master/demo/front_page.png) width="440" height="220"](https://youtu.be/dDX7NLgd1-c)
 
 ## This app uses:
 
