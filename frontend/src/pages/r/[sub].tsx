@@ -29,6 +29,8 @@ export default function SubPage() {
   const router = useRouter();
   const fileInputRef = createRef<HTMLInputElement>();
 
+  const isOnSubPage = router.pathname === `/r/[sub]`;
+
   const subName = router.query.sub;
 
   const {
@@ -74,7 +76,7 @@ export default function SubPage() {
     postsMarkup = <p className="text-lg text-center">No posts yet</p>;
   } else {
     postsMarkup = sub.posts.map((post) => (
-      <PostCard key={post.identifier} post={post} />
+      <PostCard key={post.identifier} post={post} revalidate={revalidate} />
     ));
   }
 
@@ -154,9 +156,13 @@ export default function SubPage() {
           {/* Posts section and Sidebar */}
           <div className="container flex pt-5">
             <div className="pr-2 w-160">{postsMarkup} </div>
-            <div className="hidden ml-6 md:block w-80">
-              <Sidebar sub={sub} />
-            </div>
+            {isOnSubPage && (
+              <>
+                <div className="hidden ml-6 md:block w-80">
+                  <Sidebar sub={sub} />
+                </div>
+              </>
+            )}
           </div>
         </Fragment>
       )}
