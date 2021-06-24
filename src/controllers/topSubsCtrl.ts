@@ -1,12 +1,7 @@
-import { Request, Response, Router } from 'express';
+import { Request, Response } from 'express';
 import { getConnection } from 'typeorm';
 import Post from '../entities/Posts';
 import Sub from '../entities/Sub';
-
-import auth from '../middleware/auth'; //make sure to correctly import auth
-import user from '../middleware/user';
-
-const voteController = require('../controllers/voteCtrl');
 
 exports.topSubs = async (_: Request, res: Response) => {
   try {

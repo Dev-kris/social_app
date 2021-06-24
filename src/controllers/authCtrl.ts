@@ -5,8 +5,6 @@ import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
 
 import User from '../entities/User';
-import auth from '../middleware/auth';
-import user from '../middleware/user';
 
 const mapErrors = (errors: Object[]) => {
   return errors.reduce((prev: any, err: any) => {

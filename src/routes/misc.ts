@@ -1,7 +1,4 @@
 import { Request, Response, Router } from 'express';
-import { getConnection } from 'typeorm';
-import Post from '../entities/Posts';
-import Sub from '../entities/Sub';
 
 import auth from '../middleware/auth'; //make sure to correctly import auth
 import user from '../middleware/user';

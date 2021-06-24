@@ -1,13 +1,8 @@
-import { Request, Response, Router } from 'express';
-import { getConnection } from 'typeorm';
+import { Request, Response } from 'express';
 import Comment from '../entities/Comment';
 import Post from '../entities/Posts';
-import Sub from '../entities/Sub';
 import User from '../entities/User';
 import Vote from '../entities/vote';
-
-import auth from '../middleware/auth'; //make sure to correctly import auth
-import user from '../middleware/user';
 
 exports.vote = async (req: Request, res: Response) => {
   const { identifier, slug, commentIdentifier, value } = req.body;

@@ -1,4 +1,4 @@
-import { Request, Response, Router } from 'express';
+import { Request, Response } from 'express';
 import Comment from '../entities/Comment';
 import Post from '../entities/Posts';
 import User from '../entities/User';
