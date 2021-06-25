@@ -6,9 +6,9 @@ import fs from 'fs';
 import Sub from '../entities/Sub';
 import { makeId } from '../util/helpers';
 
-const subController = require('../controllers/subCtrl');
-
-module.exports.upload = multer({
+//formats uploaded files in public/images
+//uses makeId helper to create unique filename
+exports.upload = multer({
   storage: multer.diskStorage({
     destination: 'public/images',
     filename: (_, file, callback) => {
@@ -17,6 +17,7 @@ module.exports.upload = multer({
     },
   }),
   fileFilter: (_, file: any, callback: FileFilterCallback) => {
+    //only accept jpegs and pngs
     if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
       callback(null, true);
     } else {
@@ -25,17 +26,18 @@ module.exports.upload = multer({
   },
 });
 
-module.exports.uploadSubImage = async (req: Request, res: Response) => {
+exports.uploadSubImage = async (req: Request, res: Response) => {
   const sub: Sub = res.locals.sub;
   try {
     const type = req.body.type;
-
+    //if unexpected file type is uploaded, remove
     if (type !== 'image' && type !== 'banner') {
       fs.unlinkSync(req.file.path);
       return res.status(400).json({ error: 'Invalid Type' });
     }
     let oldImageUrn: string = '';
 
+    //if image is uploaded successfully set appropriate urn.
     if (type === 'image') {
       oldImageUrn = sub.imageUrn || '';
       sub.imageUrn = req.file.filename;
@@ -44,7 +46,7 @@ module.exports.uploadSubImage = async (req: Request, res: Response) => {
       sub.bannerUrn = req.file.filename;
     }
     await sub.save();
-
+    // if upload replaces old image, remove old image
     if (oldImageUrn !== '') {
       fs.unlinkSync(`public/images/${oldImageUrn}`);
     }

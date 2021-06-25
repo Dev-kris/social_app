@@ -1,4 +1,4 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
 
 import auth from '../middleware/auth'; //make sure to correctly import auth
 import user from '../middleware/user';

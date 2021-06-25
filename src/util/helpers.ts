@@ -1,3 +1,4 @@
+// generates a random string to be used for IDs. Takes a length parameter to determine length.
 export function makeId(length: number): string {
   let result = '';
   const characters =
@@ -9,6 +10,7 @@ export function makeId(length: number): string {
   return result;
 }
 
+//removes or replaces unauthorized characters
 export function slugify(str: string): string {
   str = str.trim();
   str = str.toLowerCase();
