@@ -6,6 +6,7 @@ import Sub from '../entities/Sub';
 import Post from '../entities/Posts';
 import User from '../entities/User';
 
+// create a new sub community
 exports.createSub = async (req: Request, res: Response) => {
   const { name, title, description } = req.body;
 
@@ -21,6 +22,7 @@ exports.createSub = async (req: Request, res: Response) => {
       .where('lower(sub.name) = :name', { name: name.toLowerCase() })
       .getOne();
 
+    //check if sub exists, if true, throw error
     if (sub) errors.name = 'Sub already exists';
 
     if (Object.keys(errors).length > 0) {
@@ -33,9 +35,6 @@ exports.createSub = async (req: Request, res: Response) => {
   try {
     const sub = new Sub({ name, description, title, user });
     await sub.save();
-    console.log(user);
-    console.log('testing user data');
-    console.log(res.locals.user);
 
     return res.json(sub);
   } catch (err) {
@@ -50,6 +49,7 @@ exports.getSub = async (req: Request, res: Response) => {
     const sub = await Sub.findOneOrFail({ name });
     const posts = await Post.find({
       where: { sub },
+      // consider changing to popularity/voteCount for controversial
       order: { createdAt: 'DESC' },
       relations: ['comments', 'votes'],
     });
@@ -57,6 +57,7 @@ exports.getSub = async (req: Request, res: Response) => {
     sub.posts = posts;
 
     if (res.locals.user) {
+      //check if user has already voted on a post
       sub.posts.forEach((p) => p.setUserVote(res.locals.user));
     }
 
@@ -66,7 +67,7 @@ exports.getSub = async (req: Request, res: Response) => {
     return res.status(404).json({ sub: 'Sub not found. ' });
   }
 };
-
+// check if user created the sub, allows image modification
 exports.ownSub = async (req: Request, res: Response, next: NextFunction) => {
   const user: User = res.locals.user;
 
@@ -82,6 +83,7 @@ exports.ownSub = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+//returns communities in search bar, searches for partial matches (at name start)
 exports.searchSubs = async (req: Request, res: Response) => {
   try {
     const name = req.params.name;
