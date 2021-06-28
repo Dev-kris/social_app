@@ -26,6 +26,7 @@ exports.createPost = async (req: Request, res: Response) => {
 };
 
 exports.getPosts = async (req: Request, res: Response) => {
+  // assigns number of posts per 'page', used with infinite loading
   const currentPage: number = (req.query.page || 0) as number;
   const postsPerPage: number = (req.query.count || 8) as number;
   try {
