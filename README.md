@@ -10,20 +10,19 @@ Users are able to create their own communities where they can discuss their inte
   <img src="https://github.com/Dev-kris/social_app/blob/master/demo/sub_page.png" width="350" alt="Reddit Copy, sub page">
 </p>
 
-
-### Frontend: 
+### Frontend:
 
 Next JS  
 Typescript  
-Tailwind CSS  
+Tailwind CSS
 
 ### Backend:
 
 MySql  
 TypeORM  
-Express  
+Express
 
-### A video demo is available here:  
+### A video demo is available here:
 
 [![Video Of Reddit Copy](https://github.com/Dev-kris/social_app/blob/master/demo/front_page2.png)](https://youtu.be/dDX7NLgd1-c)
 
@@ -31,9 +30,11 @@ Express
 
 Clone this repo to local computer.
 Ensure MySQL and Node are installed.
-Open root directory in command line. 
-Run NPM install
+Open root directory in command line.
 
-NPM run dev (this launches front and backend, using concurrently and nodemon)
+````Run NPM install
+
+``` NPM run dev (this launches front and backend, using concurrently and nodemon)
 
 Navigate to localhost:3000
+````
