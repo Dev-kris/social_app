@@ -36,6 +36,7 @@ const Navbar: React.FC = () => {
   const searchSubs = async () => {
     clearTimeout(timer);
     setTimer(
+      //reduces server load by waiting for user input before auto-completing
       setTimeout(async () => {
         try {
           const { data } = await Axios.get(`/subs/search/${name}`);

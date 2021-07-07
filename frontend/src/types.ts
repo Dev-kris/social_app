@@ -20,6 +20,7 @@ export interface User {
   email: string;
   createdAt: string;
   updatedAt: string;
+  user: string;
 }
 
 export interface Sub {
