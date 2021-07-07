@@ -69,7 +69,11 @@ export default function user() {
             <div className="bg-white rounded">
               <div className="p-3 bg-blue-500 rounded-t">
                 <img
-                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+                  src={
+                    'https://avatars.dicebear.com/api/bottts/' +
+                    data.user.username +
+                    '.svg'
+                  }
                   alt="user profile"
                   className="w-16 h-16 mx-auto border-2 border-white rounded-full"
                 />
