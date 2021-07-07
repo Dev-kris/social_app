@@ -147,14 +147,22 @@ export default function PostCard({
               </ActionButton>
             </a>
           </Link>
-          <ActionButton>
-            <i className="mr-1 fas fa-share fa-xs"></i>
-            <span className="font-bold">Share</span>
-          </ActionButton>
-          <ActionButton>
-            <i className="mr-1 fas fa-bookmark fa-xs"></i>
-            <span className="font-bold">Save</span>
-          </ActionButton>
+          <Link href={url}>
+            <a>
+              <ActionButton>
+                <i className="mr-1 fas fa-share fa-xs"></i>
+                <span className="font-bold">Share</span>
+              </ActionButton>
+            </a>
+          </Link>
+          <Link href={url}>
+            <a>
+              <ActionButton>
+                <i className="mr-1 fas fa-bookmark fa-xs"></i>
+                <span className="font-bold">Save</span>
+              </ActionButton>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
