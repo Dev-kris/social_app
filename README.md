@@ -5,9 +5,9 @@ This app is a recreation of Reddit for use by a company, internally, to promote 
 Users are able to create their own communities where they can discuss their interests, hobbies, or share interesting information.
 
 <p align="center">
-  <img src="https://github.com/Dev-kris/social_app/blob/master/demo/fp_rmd.png" width="350" title="Reddit Copy">
+  <img src="https://github.com/Dev-kris/social_app/blob/master/demo/fp_rmd.png" width="450" title="Reddit Copy">
   <br>
-  <img src="https://github.com/Dev-kris/social_app/blob/master/demo/sub_page.png" width="350" alt="Reddit Copy, sub page">
+  <img src="https://github.com/Dev-kris/social_app/blob/master/demo/sub_page.png" width="450" alt="Reddit Copy, sub page">
 </p>
 
 ### Frontend:
@@ -24,7 +24,7 @@ Express
 <p align="center">
 What do the database relations look like?  </br>
 
-<img src="https://github.com/Dev-kris/social_app/blob/master/demo/database_relations.png" width="350" alt="Reddit Copy, sub page">
+<img src="https://github.com/Dev-kris/social_app/blob/master/demo/database_relations.png" width="650" alt="Reddit Copy, sub page">
 </p>
 
 ### A video demo is available here:
