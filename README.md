@@ -21,6 +21,11 @@ Tailwind CSS
 MySql  
 TypeORM  
 Express
+<p align="center">
+What do the database relations look like?  </br>
+
+<img src="https://github.com/Dev-kris/social_app/blob/master/demo/database_relations.png" width="350" alt="Reddit Copy, sub page">
+</p>
 
 ### A video demo is available here:
 
@@ -32,9 +37,10 @@ Clone this repo to local computer.
 Ensure MySQL and Node are installed.
 Open root directory in command line.
 
-````Run NPM install
+```` 
+Run NPM install
 
-``` NPM run dev (this launches front and backend, using concurrently and nodemon)
+NPM run dev (this launches front and backend, using concurrently and nodemon)
 
-Navigate to localhost:3000
 ````
+Navigate to localhost:3000
