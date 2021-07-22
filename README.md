@@ -1,6 +1,6 @@
 # Recreate Reddit
 
-This app is a recreation of Reddit for use by a company, internally, to promote stronger intradepartmental social connections
+This fullstack app is a recreation of Reddit for use by a company, internally, to promote stronger intradepartmental social connections
 
 Users are able to create their own communities where they can discuss their interests, hobbies, or share interesting information.
 
@@ -18,7 +18,7 @@ Tailwind CSS
 
 ### Backend:
 
-MySql  
+MySQL  
 TypeORM  
 Express
 <p align="center">
@@ -43,4 +43,4 @@ Run NPM install
 NPM run dev (this launches front and backend, using concurrently and nodemon)
 
 ````
-Navigate to localhost:3000
+Navigate to [localhost:3000](http://localhost:3000)
