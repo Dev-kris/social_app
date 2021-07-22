@@ -37,10 +37,11 @@ Clone this repo to local computer.
 Ensure MySQL and Node are installed.
 Open root directory in command line.
 
+Run
 ```` 
-Run NPM install
+npm install
 
-NPM run dev (this launches front and backend, using concurrently and nodemon)
+npm run dev (this launches front and backend, using concurrently and nodemon)
 
 ````
 Navigate to [localhost:3000](http://localhost:3000)
